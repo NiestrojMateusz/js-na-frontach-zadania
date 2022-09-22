@@ -5,20 +5,9 @@
  * całość programu musi jednak działać tak jak do tej pory !
  *
  * */
+import {hasAddress, isAdult, User} from "./helpers";
 
-interface Address {
-  street: string,
-  no: number,
-}
 
-interface User {
-  name: string;
-  age: number;
-  email: string;
-  address: Address,
-}
-
-type HasGivenAgeFn = (user: User) => boolean;
 
 const user: User = {
   name: 'Andy',
@@ -29,15 +18,7 @@ const user: User = {
     no: 23,
   },
 }
-function hasAddress(user: User): boolean {
-  return Boolean(user.address)
-}
 
-function hasGivenAge(requiredAge: number): HasGivenAgeFn {
-  return (user: User) => user.age >= requiredAge
-}
-
-const isAdult = hasGivenAge(18)
 
 console.log(`User ${user.name} is ${isAdult(user) ? 'adult' : 'minor'}`)
 console.log(`and has${hasAddress(user) ? '' : ' no'} address`)
